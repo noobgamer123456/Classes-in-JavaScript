@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>JavaScript class inheritance and static method</h2>
+
+    <p id="details1"></p>
+    <p id="details2"></p>
+    <p id="details3"></p>
+    <p id="details4"></p>
+    <p id="details5"></p>
+    <p id="greetings"></p>
+
+    <script>
+      class vehicle {
+        constructor(brandname) {
+          this.brandname = brandname;
+        }
+        static hello() {
+          return "Hello";
+        }
+
+        details() {
+          return `Brand Name: ${this.brandname}<br>`;
+        }
+      }
+
+      class model extends vehicle {
+        constructor(brandname, model) {
+          super(brandname);
+          this.model = model;
+        }
+        show() {
+          return this.details() + "Model: " + this.model;
+        }
+      }
+
+      var mcLaren = new model("McLaren", "Senna");
+      var ferrari = new model("Ferrari", "LaFerrari");
+      var bugatti = new model("Bugatti", "Chiron");
+      var lamborghini = new model("Lamborghini", "Aventador");
+      var porsche = new model("Porsche", "911 GT3");
+
+      document.getElementById("details1").innerHTML = mcLaren.show();
+      document.getElementById("details2").innerHTML = ferrari.show();
+      document.getElementById("details3").innerHTML = bugatti.show();
+      document.getElementById("details4").innerHTML = lamborghini.show();
+      document.getElementById("details5").innerHTML = porsche.show();
+      document.getElementById("greetings").innerHTML = vehicle.hello();
+    </script>
+  </body>
+</html>
